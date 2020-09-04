@@ -20,6 +20,11 @@ public class Estado {
     String nome;
     double pib;
     
+    public Estado(String nome, Double pib) {
+        this.nome = nome;
+        this.pib = pib;
+    }
+    
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -34,11 +39,6 @@ public class Estado {
     
     public double getPIB() {
         return pib;
-    }
-    
-    Estado(String nome, Double pib) {
-        this.nome = nome;
-        this.pib = pib;
     }
     
     public static List<Estado> lerPIB(String arquivo) {
@@ -70,7 +70,7 @@ public class Estado {
     public static double totalPIB(List<Estado> estados) {
         double totalPIB = 0;
         for(Estado estado : estados) {
-            totalPIB = totalPIB + estado.getPIB();
+            totalPIB += estado.getPIB();
         }
         return totalPIB;
     }

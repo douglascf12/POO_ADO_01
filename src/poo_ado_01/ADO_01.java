@@ -17,6 +17,7 @@ import static poo_ado_01.Estado.lerPIB;
  */
 public class ADO_01 {
     public static void main(String[] args) {
+        
         DecimalFormat df = new DecimalFormat("0.00");
         
         // nome do arquivo
@@ -29,6 +30,41 @@ public class ADO_01 {
             Estado.percentual(estados);
             System.out.println(estado.nome + ": " + df.format(estado.pib) + "%");
         }
+        
+        ArrayList<Regiao> regiao = new ArrayList<Regiao>();
+        
+        Regiao norte = new Regiao("Norte", 0.0);
+        Regiao nordeste = new Regiao("Nordeste", 0.0);
+        Regiao sudeste = new Regiao("Sudeste", 0.0);
+        Regiao sul = new Regiao("Sul", 0.0);
+        Regiao centroOeste = new Regiao("Centro-Oeste", 0.0);
+        regiao.add(norte);
+        regiao.add(nordeste);
+        regiao.add(sudeste);
+        regiao.add(sul);
+        regiao.add(centroOeste);
+        
+        Regiao.somaPIBPorRegiao(regiao, pib, regioes);
+        
+        for(Regiao regiao1 : regiao) {
+            //Estado.percentual(estados);
+            System.out.println(regiao1.nome + ": " + df.format(regiao1.pib));
+        }
+        
+        
+        //System.out.println(regiao.size());
+        
+        
+        //Regiao nome1 = new Regiao("Norte", 0.0);
+        //test.add(nome1);
+        
+        System.out.println(regiao.get(0).nome);
+        System.out.println(regiao.get(0).pib);
+        
+        
+        
+        
+        
         
         
 /*      ------------------------------------- */
