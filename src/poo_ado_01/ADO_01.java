@@ -1,10 +1,17 @@
 package poo_ado_01;
 
-import java.io.*;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import static poo_ado_01.Estado.lerPIB;
+
+/*
+Deseja-se um aplicativo capaz de tomar os dados em um arquivo de textocontendo os PIBs 
+por estado do Brasil (pib.txt) carregá-los na memória e executaros seguintes itens:
+
+a) Imprimir na tela a lista de PIB por estado em percentual em relação ao total.
+b) Gerar um arquivo de saída (saida.txt) sumarizando (somando) o PIB porregiões.
+Será fornecida uma lista de estados por regiões que deve ser lida do arquivo regioes.txt
+*/
 
 /**
  * Class Description...
@@ -13,81 +20,31 @@ import static poo_ado_01.Estado.lerPIB;
  * @version: 1.0
  * Main Class File: ADO_01.java
  * File: ADO_01.java
- * Date: DD/MM/YYYY
+ * Date: 03/09/2020
  */
 public class ADO_01 {
-    public static void main(String[] args) {
-        
-        DecimalFormat df = new DecimalFormat("0.00");
-        
-        // nome do arquivo
-        String pib = "pib.txt";
-        String regioes = "regioes.txt";
-        
-        List<Estado> estados = lerPIB(pib);
-        
-        for(Estado estado : estados) {
-            Estado.percentual(estados);
-            System.out.println(estado.nome + ": " + df.format(estado.pib) + "%");
-        }
-        
-        ArrayList<Regiao> regiao = new ArrayList<Regiao>();
-        
-        Regiao norte = new Regiao("Norte", 0.0);
-        Regiao nordeste = new Regiao("Nordeste", 0.0);
-        Regiao sudeste = new Regiao("Sudeste", 0.0);
-        Regiao sul = new Regiao("Sul", 0.0);
-        Regiao centroOeste = new Regiao("Centro-Oeste", 0.0);
-        regiao.add(norte);
-        regiao.add(nordeste);
-        regiao.add(sudeste);
-        regiao.add(sul);
-        regiao.add(centroOeste);
-        
-        Regiao.somaPIBPorRegiao(regiao, pib, regioes);
-        
-        for(Regiao regiao1 : regiao) {
-            //Estado.percentual(estados);
-            System.out.println(regiao1.nome + ": " + df.format(regiao1.pib));
-        }
-        
-        
-        //System.out.println(regiao.size());
-        
-        
-        //Regiao nome1 = new Regiao("Norte", 0.0);
-        //test.add(nome1);
-        
-        System.out.println(regiao.get(0).nome);
-        System.out.println(regiao.get(0).pib);
-        
-        
-        
-        
-        
-        
-        
-/*      ------------------------------------- */
-/*      Exemplo de escrita em arquivo         */
-/*      ------------------------------------- */
-
-        String arquivoDeSaida = "saida.txt";
-        
-        try {
-            
-            FileWriter fileWriter = new FileWriter(arquivoDeSaida);
-            
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            
-            bufferedWriter.write("pib da região x = $$$$");
-            bufferedWriter.newLine();
-            bufferedWriter.write("pib da região Y = $$$$");
-            
-            // feche o arquivo
-            bufferedWriter.close();
-        } catch(IOException ex) {
-            System.out.println("Erro lendo o arquivo '" + arquivoDeSaida + "'");
-        }
-    }
     
+    public static void main(String[] args) {
+        // nome dos arquivos
+        String arquivoPIB = "pib.txt";
+        String arquivoRegioes = "regioes.txt";
+        String arquivoSaida = "saida.txt";
+        
+        // array de "estados" criados e chamado método que lê linha por linha e salva 
+        // cada linha com um objeto dentro de cada elemento do array "estados"
+        List<Estado> estados = lerPIB(arquivoPIB);
+        
+        // método que imprime os estados
+        Estado.imprime(estados);
+        
+        // array de regiao criado
+        ArrayList<Regiao> regioes = new ArrayList<Regiao>();
+        
+        // método soma o PIB de cada região de acordo com seu respectivo estado
+        Regiao.somaPIBPorRegiao(regioes, arquivoPIB, arquivoRegioes);
+        
+        // método que escreve o PIB de cada região em um arquivo txt
+        Regiao.escreverArquivo(regioes, arquivoSaida);
+    }
+ 
 }

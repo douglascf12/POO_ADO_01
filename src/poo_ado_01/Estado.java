@@ -3,6 +3,7 @@ package poo_ado_01;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,9 +14,11 @@ import java.util.List;
  * @version: 1.0
  * Main Class File: ADO_01.java
  * File: Estado.java
- * Date: DD/MM/YYYY
+ * Date: 03/09/2020
  */
 public class Estado {
+    
+    
     
     String nome;
     double pib;
@@ -82,6 +85,19 @@ public class Estado {
             estado.setPIB(porcetagem);
         }
         return estados;
+    }
+    
+    public static void imprime(List<Estado> estados) {
+        
+        DecimalFormat df = new DecimalFormat("0.00");
+        
+        // é chamado o método que faz a soma dos percentuais de cada estados
+        Estado.percentual(estados);
+        
+        // for para correr cada estado do array e imprimir
+        for(Estado estado : estados) {
+            System.out.println(estado.nome + ": " + df.format(estado.pib) + "%");
+        }
     }
     
 }

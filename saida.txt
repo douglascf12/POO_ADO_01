@@ -1,2 +1,5 @@
-pib da região x = $$$$
-pib da região Y = $$$$
+Norte: 221,5
+Nordeste: 551
+Sudeste: 2294
+Sul: 671
+Centro-Oeste: 395
