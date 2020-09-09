@@ -1,4 +1,4 @@
-package poo_ado_01;
+package ADO_01;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-import static poo_ado_01.Estado.lerPIB;
+import static ADO_01.Estado.lerPIB;
 
 /**
  * Class Description...

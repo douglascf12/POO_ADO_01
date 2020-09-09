@@ -1,8 +1,8 @@
-package poo_ado_01;
+package ADO_01;
 
 import java.util.ArrayList;
 import java.util.List;
-import static poo_ado_01.Estado.lerPIB;
+import static ADO_01.Estado.lerPIB;
 
 /*
 Deseja-se um aplicativo capaz de tomar os dados em um arquivo de textocontendo os PIBs 

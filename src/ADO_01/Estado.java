@@ -1,4 +1,4 @@
-package poo_ado_01;
+package ADO_01;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
